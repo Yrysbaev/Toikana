@@ -9,6 +9,8 @@ public class Admin {
         if(choice.equals("1")) {
             Users user = new Users();
             Users.WelcomeforAdmin();
+        }else if(choice.equals("2")){
+            return;
         }
     }
 

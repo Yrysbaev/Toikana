@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 import java.util.Map.Entry;
 public class Users{
@@ -34,14 +35,17 @@ public class Users{
         }
     }
     private static void addUsers(){
+        System.out.println(readUser());
         System.out.println("Create username:");
         Scanner scan = new Scanner(System.in);
         String newUser = scan.nextLine();
         System.out.println("Create password:");
         String newUserpassword = scan.nextLine();
+
         System.out.println("What is the role of this user");
         System.out.println("1.Admin\n2.Manager\n3.Waiter");
         String usersrole = scan.nextLine();
+        addUser(newUser,newUserpassword,usersrole);
         if(usersrole.equals("1")){
             Adminusernames.add(newUser);
             Adminpasswords.add(newUserpassword);
@@ -134,7 +138,6 @@ public class Users{
 
         }
 
-
     private static void information(){
         System.out.println("You are in information menu!");
         System.out.println("1.Admin\n2.Manager\n3.Waiter");
@@ -152,6 +155,40 @@ public class Users{
                 WelcomeforAdmin();
             }
         }
+    }
+
+    private static void addUser(String name,String password,String role){
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Users.txt"));
+            writer.write(name + password + role);
+            writer.close();
+
+
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+
+    }
+    private static List<Character> readUser(){
+        List<Character> UserNameChars = new ArrayList<Character>();
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Redmi\\Desktop\\UNIVERSITY\\JavaOOP\\Toikana\\Users.txt"));
+            String line = reader.readLine();
+
+            for(int i =0;i<line.length();i++){
+                if(line.charAt(i) != ' '){
+                    UserNameChars.add(line.charAt(i));
+                }
+                if(line.charAt(i) == ' '){
+                    break;
+                }
+            }
+
+            return UserNameChars;
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return UserNameChars;
     }
 
 }

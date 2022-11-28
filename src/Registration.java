@@ -36,17 +36,17 @@ public class Registration {
     }
 
 
-    private static Boolean  checkFromDataBase(){
+    private static Boolean checkFromDataBase(){
         Boolean flag = false;
-        String jdbcUrl = "jdbc:postgresql://localhost:5432/postgres";
-        String databaseUserName = "umut";
-        String databaseUserPassword = "0000";
+        String jdbcUrl = "jdbc:postgresql://localhost:5430/postgres";
+
         try {
-            Connection connection = DriverManager.getConnection(jdbcUrl, databaseUserName, databaseUserPassword);
-            System.out.println("Connected");
+            Connection connection = DriverManager.getConnection(jdbcUrl);
+            System.out.println("Connect");
             String sql = "SELECT  * from users";
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
+            System.out.println('s');
             while (result.next()) {
                 String usernameFromTable = result.getString("username");
                 String password = result.getString("password");
@@ -57,6 +57,7 @@ public class Registration {
                 }
 
             }
+
             connection.close();
         } catch (SQLException e) {
             System.out.println("Error in connection");

@@ -24,9 +24,9 @@ public class Users {
 
 
         private static void InformationaboutUsers () {
-            String jdbcUrl = "jdbc:postgresql://localhost:5432/postgres";
-            String databaseUserName = "umut";
-            String databaseUserPassword = "0000";
+            String jdbcUrl =  "jdbc:postgresql://ec2-54-75-26-218.eu-west-1.compute.amazonaws.com:5432/d76rlbpbnjk96j";
+            String databaseUserName = "aipsdsjuqegbvf";
+            String databaseUserPassword = "0d9cbb30ef98cc294991fc63006f9a6685590912fee984771fd133a11935945c";
             try {
                 Connection connection = DriverManager.getConnection(jdbcUrl, databaseUserName, databaseUserPassword);
                 System.out.println("Connected");
@@ -40,26 +40,14 @@ public class Users {
         }
 
         private static void DeleteUser () {
-            String jdbcUrl = "jdbc:postgresql://localhost:5432/postgres";
-            String databaseUserName = "umut";
-            String databaseUserPassword = "0000";
-
-            try {
-                Connection connection = DriverManager.getConnection(jdbcUrl, databaseUserName, databaseUserPassword);
-                System.out.println();
-                Scanner scanner = new Scanner(System.in);
-                connection.close();
-            } catch (SQLException e) {
-                System.out.println("Error in connection");
-                throw new RuntimeException(e);
-            }
+           InformationaboutUsers();
 
         }
 
         private static void addUser () {
-            String jdbcUrl = "jdbc:postgresql://localhost:5432/postgres";
-            String databaseUserName = "umut";
-            String databaseUserPassword = "0000";
+            String jdbcUrl =  "jdbc:postgresql://ec2-54-75-26-218.eu-west-1.compute.amazonaws.com:5432/d76rlbpbnjk96j";
+            String databaseUserName = "aipsdsjuqegbvf";
+            String databaseUserPassword = "0d9cbb30ef98cc294991fc63006f9a6685590912fee984771fd133a11935945c";
 
             try {
                 Connection connection = DriverManager.getConnection(jdbcUrl, databaseUserName, databaseUserPassword);

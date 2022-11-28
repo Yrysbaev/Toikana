@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Admin {
-    public static void welcome(){
+    public  static void welcome(){
         System.out.println("Welcome Admin!\nWhat are we going to do today?");
         System.out.println("1.Users\n2.Restaurants\n3.Serving Table\n4.Menu\n5.Event\n6.Report\n\n0.Exit");
         Scanner scan = new Scanner(System.in);

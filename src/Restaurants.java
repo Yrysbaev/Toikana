@@ -3,41 +3,47 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Restaurants {
+    public static void AdminWelcome() {
 
-    static List<String> Restaurants = new ArrayList<String>();
-    static List<String> RestaurantAddress = new ArrayList<String>();
-    static List<String> RestaurantManager = new ArrayList<String>();
-    static List<String> Restaurantsize = new ArrayList<String>();
-
-    public static void WelcomeRestaurant(){
-        System.out.println("Welcome Admin");
-        System.out.println("You are in Restaurant's menu");
-        System.out.println("What are we going to do today?");
-        System.out.println("1.Add Restaurant\n2.Delete Restaurant\n3.Change Restaurants\n\n9.Information\n0.Exit");
+        System.out.println("Welcome to Restaurants!\nWhat are we going to do today?");
+        System.out.println("1.Add Restaurants\n2.Delete Restaurants\n3.Change Restaurants\n\n9.Information\n0.Exit");
         Scanner scan = new Scanner(System.in);
         String choice = scan.nextLine();
-        if(choice.equals("1")) {
-            Addrestaurant();
-        }else if(choice.equals("2")){
-            Deleterestaurant();
-        }else if(choice.equals("3")){
-            Changerestaurant();
-        }else if(choice.equals("9")){
-            Information();
-        }else if(choice.equals("0")){
-            Admin.welcome();
+        if (choice.equals("1") || choice.equals("Add")) {
+            System.out.println("This part is not ready yet!");
+            AdminWelcome();
+        } else if (choice.equals("2") || choice.equals("Delete")) {
+            System.out.println("This part is not ready yet!");
+            AdminWelcome();
+        } else if (choice.equals("3") || choice.equals("Change")) {
+            System.out.println("This part is not ready yet!");
+            AdminWelcome();
+        } else if (choice.equals("9") || choice.equals("Information")){
+            System.out.println("This part is not ready yet!");
+            AdminWelcome();
+        } else if (choice.equals("0") || choice.equals("Exit")){
+            Admin.adminwelcome();
         }
     }
-    private static void Addrestaurant(){
-
-    }
-    private static void Deleterestaurant(){
-
-    }
-    private static void Changerestaurant(){
-
-    }
-    private static void Information(){
-
+    public static void ManagerWelcome() {
+        System.out.println("Welcome to Restaurants!\nWhat are we going to do today?");
+        System.out.println("1.Add Restaurants\n2.Delete Restaurants\n3.Change Restaurants\n\n9.Information\n0.Exit");
+        Scanner scan = new Scanner(System.in);
+        String choice = scan.nextLine();
+        if (choice.equals("1") || choice.equals("Add")) {
+            System.out.println("This part is not ready yet!");
+            ManagerWelcome();
+        } else if (choice.equals("2") || choice.equals("Delete")) {
+            System.out.println("This part is not ready yet!");
+            ManagerWelcome();
+        } else if (choice.equals("3") || choice.equals("Change")) {
+            System.out.println("This part is not ready yet!");
+            ManagerWelcome();
+        } else if (choice.equals("9") || choice.equals("Information")){
+            System.out.println("This part is not ready yet!");
+            ManagerWelcome();
+        } else if (choice.equals("0") || choice.equals("Exit")){
+            Admin.managerwelcome();
+        }
     }
 }

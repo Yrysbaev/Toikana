@@ -5,6 +5,7 @@ public class Registration {
     static String username;
     static String userpassword;
     static String role;
+
     public Registration() {
 
 
@@ -16,56 +17,51 @@ public class Registration {
         username = scan.nextLine().trim();
         System.out.println("Password:");
         userpassword = scan.nextLine().trim();
-        if(checkFromDataBase()){
+        if (checkFromDataBase()) {
             System.out.println("You logged in");
             System.out.println(role);
-            switch(role){
+            switch (role) {
                 case "admin":
-                    Admin.welcome();
+                    Admin.adminwelcome();
                     break;
                 case "manager":
+                    Admin.managerwelcome();
                     break;
                 case "waiter":
-                    System.out.println("You are waiter");
+                    Admin.waiterwelcom();
                     break;
             }
-        } else{
+        } else {
             System.out.println("Incorrect password or name");
             input();
         }
     }
 
 
-    private static Boolean checkFromDataBase(){
+    private static Boolean checkFromDataBase() {
         Boolean flag = false;
-        String jdbcUrl = "jdbc:postgresql://localhost:5430/postgres";
-
+        String jdbcUrl =  "jdbc:postgresql://ec2-54-75-26-218.eu-west-1.compute.amazonaws.com:5432/d76rlbpbnjk96j";
+        String databaseUserName = "aipsdsjuqegbvf";
+        String databaseUserPassword = "0d9cbb30ef98cc294991fc63006f9a6685590912fee984771fd133a11935945c";
         try {
-            Connection connection = DriverManager.getConnection(jdbcUrl);
-            System.out.println("Connect");
+            Connection connection = DriverManager.getConnection(jdbcUrl, databaseUserName, databaseUserPassword);
             String sql = "SELECT  * from users";
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
-            System.out.println('s');
             while (result.next()) {
                 String usernameFromTable = result.getString("username");
                 String password = result.getString("password");
-
-                if(userpassword.equals(password) && username.equals(usernameFromTable)){
+                if (userpassword.equals(password) && username.equals(usernameFromTable)) {
                     role = result.getString("role");
                     flag = true;
                 }
-
             }
-
             connection.close();
         } catch (SQLException e) {
-            System.out.println("Error in connection");
             throw new RuntimeException(e);
-
         }
         return flag;
     }
+}
 
-    }
 

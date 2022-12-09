@@ -23,6 +23,7 @@ public class Registration {
             switch (role) {
                 case "admin":
                     Admin.adminwelcome();
+
                     break;
                 case "manager":
                     Admin.managerwelcome();

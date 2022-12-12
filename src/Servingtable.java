@@ -55,14 +55,14 @@ public class Servingtable {
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
         if(choice.equals("m")){
-            if(Registration.role.equals("Admin")){
+            if(Registration.role.equals("admin")){
                 AdminWelcome();
             }else {
                 ManagerWelcome();
             }
         }else{
             System.out.println("Error");
-            if(Registration.role.equals("Admin")){
+            if(Registration.role.equals("admin")){
                 AdminWelcome();
             }else {
                 ManagerWelcome();
@@ -88,7 +88,7 @@ public class Servingtable {
             statement.setInt(3, numberoftable);
             statement.executeUpdate();
             System.out.println("The servingtable has been added!");
-            if(Registration.role.equals("Admin")){
+            if(Registration.role.equals("admin")){
                 AdminWelcome();
             }else {
                 ManagerWelcome();
@@ -126,14 +126,14 @@ public class Servingtable {
                         Statement statement2 = connection.createStatement();
                         statement2.executeUpdate(sql);
                         System.out.println("The Servingtable has been deleted!");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
                         }
                     }else{
                         System.out.println("Incorrect username");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
@@ -175,7 +175,7 @@ public class Servingtable {
                         Statement statement2 = connection.createStatement();
                         statement2.executeUpdate(sql);
                         System.out.println("The Servingtable has been changed!");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
@@ -187,7 +187,7 @@ public class Servingtable {
                         Statement statement2 = connection.createStatement();
                         statement2.executeUpdate(sql);
                         System.out.println("The Servingtable has been changed!");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
@@ -199,14 +199,14 @@ public class Servingtable {
                         Statement statement2 = connection.createStatement();
                         statement2.executeUpdate(sql);
                         System.out.println("The Servingtable has been changed!");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
                         }
                     }else{
                         System.out.println("Incorrect username");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();

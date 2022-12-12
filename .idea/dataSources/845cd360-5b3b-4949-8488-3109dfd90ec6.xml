@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.43">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>837</IntrospectionStateNumber>
+      <IntrospectionStateNumber>873</IntrospectionStateNumber>
       <ServerVersion>15.1</ServerVersion>
-      <StartupTime>1670510478</StartupTime>
+      <StartupTime>1670604945</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -805,11 +805,13 @@ false Zulu
 13471||10|C|G
 13471||-9223372036854775808|U|G
 13471||10|U|G</Grants>
-      <IntrospectionStateNumber>837</IntrospectionStateNumber>
+      <IntrospectionStateNumber>873</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <Relations>sequence|table|16448|16449|1
 sequence|table|16453|16454|1
+sequence|table|16475|16476|1
 sequence|table|16458|16459|1
+sequence|table|16483|16480|1
 sequence|table|16443|16425|8
 </Relations>
       <OwnerName>postgres</OwnerName>
@@ -4238,60 +4240,128 @@ sequence|table|16443|16425|8
     <schema id="266" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>837</IntrospectionStateNumber>
+      <IntrospectionStateNumber>873</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>517</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
-    <sequence id="267" parent="266" name="menu_id_seq">
+    <sequence id="267" parent="266" name="event_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>16475</ObjectId>
+      <StateNumber>850</StateNumber>
+      <OwnerName>mzamirbekovic02gmail.com</OwnerName>
+    </sequence>
+    <sequence id="268" parent="266" name="menu_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>16458</ObjectId>
       <StateNumber>816</StateNumber>
       <OwnerName>mzamirbekovic02gmail.com</OwnerName>
     </sequence>
-    <sequence id="268" parent="266" name="restaurants_id_seq">
+    <sequence id="269" parent="266" name="restaurants_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>16448</ObjectId>
       <StateNumber>803</StateNumber>
       <OwnerName>mzamirbekovic02gmail.com</OwnerName>
     </sequence>
-    <sequence id="269" parent="266" name="servingtable_id_seq">
+    <sequence id="270" parent="266" name="servingtable_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>16453</ObjectId>
       <StateNumber>810</StateNumber>
       <OwnerName>mzamirbekovic02gmail.com</OwnerName>
     </sequence>
-    <sequence id="270" parent="266" name="users_id_seq">
+    <sequence id="271" parent="266" name="typeofevent_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>16483</ObjectId>
+      <StateNumber>855</StateNumber>
+      <OwnerName>mzamirbekovic02gmail.com</OwnerName>
+    </sequence>
+    <sequence id="272" parent="266" name="users_id_seq">
       <DataType>integer|0s</DataType>
       <ObjectId>16443</ObjectId>
       <StateNumber>799</StateNumber>
       <OwnerName>mzamirbekovic02gmail.com</OwnerName>
     </sequence>
-    <table id="271" parent="266" name="menu">
+    <table id="273" parent="266" name="event">
+      <ObjectId>16476</ObjectId>
+      <StateNumber>862</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>mzamirbekovic02gmail.com</OwnerName>
+    </table>
+    <table id="274" parent="266" name="menu">
       <ObjectId>16459</ObjectId>
       <StateNumber>836</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>mzamirbekovic02gmail.com</OwnerName>
     </table>
-    <table id="272" parent="266" name="restaurants">
+    <table id="275" parent="266" name="restaurants">
       <ObjectId>16449</ObjectId>
       <StateNumber>803</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>mzamirbekovic02gmail.com</OwnerName>
     </table>
-    <table id="273" parent="266" name="servingtable">
+    <table id="276" parent="266" name="servingtable">
       <ObjectId>16454</ObjectId>
       <StateNumber>811</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>mzamirbekovic02gmail.com</OwnerName>
     </table>
-    <table id="274" parent="266" name="users">
+    <table id="277" parent="266" name="typeofevent">
+      <ObjectId>16480</ObjectId>
+      <StateNumber>857</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>mzamirbekovic02gmail.com</OwnerName>
+    </table>
+    <table id="278" parent="266" name="users">
       <ObjectId>16425</ObjectId>
       <StateNumber>799</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>mzamirbekovic02gmail.com</OwnerName>
     </table>
-    <column id="275" parent="271" name="id">
+    <column id="279" parent="273" name="id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;event_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>850</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="280" parent="273" name="date">
+      <DataType>varchar(15)|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>862</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="281" parent="273" name="restaurant">
+      <DataType>varchar(150)|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>850</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="282" parent="273" name="type">
+      <DataType>varchar(150)|0s</DataType>
+      <Position>5</Position>
+      <StateNumber>850</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="283" parent="273" name="people">
+      <DataType>integer|0s</DataType>
+      <Position>6</Position>
+      <StateNumber>850</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="284" parent="273" name="price">
+      <DataType>integer|0s</DataType>
+      <Position>7</Position>
+      <StateNumber>850</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="285" parent="273" name="menu">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>8</Position>
+      <StateNumber>860</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="286" parent="274" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;menu_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4299,31 +4369,31 @@ sequence|table|16443|16425|8
       <StateNumber>816</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="276" parent="271" name="name">
+    <column id="287" parent="274" name="name">
       <DataType>varchar(200)|0s</DataType>
       <Position>4</Position>
       <StateNumber>831</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="277" parent="271" name="price">
+    <column id="288" parent="274" name="price">
       <DataType>varchar(200)|0s</DataType>
       <Position>5</Position>
       <StateNumber>824</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="278" parent="271" name="total">
+    <column id="289" parent="274" name="total">
       <DataType>integer|0s</DataType>
       <Position>6</Position>
       <StateNumber>825</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="279" parent="271" name="meals">
+    <column id="290" parent="274" name="meals">
       <DataType>varchar(200)|0s</DataType>
       <Position>8</Position>
       <StateNumber>836</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="280" parent="272" name="id">
+    <column id="291" parent="275" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;restaurants_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4331,31 +4401,31 @@ sequence|table|16443|16425|8
       <StateNumber>803</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="281" parent="272" name="name">
+    <column id="292" parent="275" name="name">
       <DataType>varchar(50)|0s</DataType>
       <Position>2</Position>
       <StateNumber>803</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="282" parent="272" name="address">
+    <column id="293" parent="275" name="address">
       <DataType>varchar(50)|0s</DataType>
       <Position>3</Position>
       <StateNumber>803</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="283" parent="272" name="manager">
+    <column id="294" parent="275" name="manager">
       <DataType>varchar(50)|0s</DataType>
       <Position>4</Position>
       <StateNumber>803</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="284" parent="272" name="numberofhalls">
+    <column id="295" parent="275" name="numberofhalls">
       <DataType>integer|0s</DataType>
       <Position>5</Position>
       <StateNumber>803</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="285" parent="273" name="id">
+    <column id="296" parent="276" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;servingtable_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4363,61 +4433,75 @@ sequence|table|16443|16425|8
       <StateNumber>810</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="286" parent="273" name="hall">
+    <column id="297" parent="276" name="hall">
       <DataType>varchar(50)|0s</DataType>
       <Position>2</Position>
       <StateNumber>810</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="287" parent="273" name="format">
+    <column id="298" parent="276" name="format">
       <DataType>varchar(50)|0s</DataType>
       <Position>3</Position>
       <StateNumber>810</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="288" parent="273" name="numberoftable">
+    <column id="299" parent="276" name="numberoftable">
       <DataType>integer|0s</DataType>
       <Position>4</Position>
       <StateNumber>811</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="289" parent="274" name="username">
+    <column id="300" parent="277" name="id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;typeofevent_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>855</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="301" parent="277" name="name">
+      <DataType>varchar(100)|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>857</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="302" parent="278" name="username">
       <DataType>varchar(50)|0s</DataType>
       <Position>2</Position>
       <StateNumber>758</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="290" parent="274" name="password">
+    <column id="303" parent="278" name="password">
       <DataType>varchar(50)|0s</DataType>
       <Position>3</Position>
       <StateNumber>759</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="291" parent="274" name="role">
+    <column id="304" parent="278" name="role">
       <DataType>varchar(20)|0s</DataType>
       <Position>4</Position>
       <StateNumber>777</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="292" parent="274" name="gender">
+    <column id="305" parent="278" name="gender">
       <DataType>varchar(10)|0s</DataType>
       <Position>5</Position>
       <StateNumber>783</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="293" parent="274" name="birthday">
+    <column id="306" parent="278" name="birthday">
       <DataType>date|0s</DataType>
       <Position>6</Position>
       <StateNumber>786</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="294" parent="274" name="email">
+    <column id="307" parent="278" name="email">
       <DataType>varchar(50)|0s</DataType>
       <Position>7</Position>
       <StateNumber>789</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="295" parent="274" name="id">
+    <column id="308" parent="278" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>

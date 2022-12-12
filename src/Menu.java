@@ -42,21 +42,21 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
         if(choice.equals("m")){
-            if(Registration.role.equals("Admin")){
+            if(Registration.role.equals("admin")){
                 AdminWelcome();
             }else {
                 ManagerWelcome();
             }
         }else{
             System.out.println("Error");
-            if(Registration.role.equals("Admin")){
+            if(Registration.role.equals("admin")){
                 AdminWelcome();
             }else {
                 ManagerWelcome();
             }
         }
     }
-    private static void Informationaboutmenu(){
+    public static void Informationaboutmenu(){
         String jdbcUrl =  "jdbc:postgresql://localhost:5430/postgres";
         try {
             Connection connection = DriverManager.getConnection(jdbcUrl);
@@ -90,7 +90,7 @@ public class Menu {
             statement.setInt(4,total);
             statement.executeUpdate();
             System.out.println("The menu has been added!");
-            if(Registration.role.equals("Admin")){
+            if(Registration.role.equals("admin")){
                 AdminWelcome();
             }else {
                 ManagerWelcome();
@@ -127,14 +127,14 @@ public class Menu {
                         Statement statement2 = connection.createStatement();
                         statement2.executeUpdate(sql);
                         System.out.println("The menu has been deleted!");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
                         }
                     }else{
                         System.out.println("Incorrect username");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
@@ -178,7 +178,7 @@ public class Menu {
                         Statement statement2 = connection.createStatement();
                         statement2.executeUpdate(sql);
                         System.out.println("The menu has been changed!");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
@@ -190,7 +190,7 @@ public class Menu {
                         Statement statement2 = connection.createStatement();
                         statement2.executeUpdate(sql);
                         System.out.println("The menu has been changed!");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
@@ -202,7 +202,7 @@ public class Menu {
                         Statement statement2 = connection.createStatement();
                         statement2.executeUpdate(sql);
                         System.out.println("The menu has been changed!");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
@@ -214,14 +214,14 @@ public class Menu {
                         Statement statement2 = connection.createStatement();
                         statement2.executeUpdate(sql);
                         System.out.println("The menu has been changed!");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();
                         }
                     }else{
                         System.out.println("Incorrect username");
-                        if(Registration.role.equals("Admin")){
+                        if(Registration.role.equals("admin")){
                             AdminWelcome();
                         }else {
                             ManagerWelcome();

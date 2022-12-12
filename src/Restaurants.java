@@ -22,7 +22,7 @@ public class Restaurants {
             Admin.adminwelcome();
         }
     }
-    private static void informationaboutrestaurants(){
+    public static void informationaboutrestaurants(){
         String jdbcUrl =  "jdbc:postgresql://localhost:5430/postgres";
         try {
             Connection connection = DriverManager.getConnection(jdbcUrl);

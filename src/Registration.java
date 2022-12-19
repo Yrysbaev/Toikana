@@ -23,7 +23,6 @@ public class Registration {
             switch (role) {
                 case "admin":
                     Admin.adminwelcome();
-
                     break;
                 case "manager":
                     Admin.managerwelcome();
@@ -41,11 +40,9 @@ public class Registration {
 
     private static Boolean checkFromDataBase() {
         Boolean flag = false;
-        String jdbcUrl =  "jdbc:postgresql://ec2-54-75-26-218.eu-west-1.compute.amazonaws.com:5432/d76rlbpbnjk96j";
-        String databaseUserName = "aipsdsjuqegbvf";
-        String databaseUserPassword = "0d9cbb30ef98cc294991fc63006f9a6685590912fee984771fd133a11935945c";
+        String jdbcUrl =  "jdbc:postgresql://localhost:5430/postgres";
         try {
-            Connection connection = DriverManager.getConnection(jdbcUrl, databaseUserName, databaseUserPassword);
+            Connection connection = DriverManager.getConnection(jdbcUrl);
             String sql = "SELECT  * from users";
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);

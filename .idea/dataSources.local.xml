@@ -17,14 +17,5 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
-    <data-source name="d76rlbpbnjk96j@ec2-54-75-26-218.eu-west-1.compute.amazonaws.com" uuid="5f7da80f-7e91-4b17-ad28-4095dbe89209">
-      <database-info product="PostgreSQL" version="14.5 (Ubuntu 14.5-2.pgdg20.04+2)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.5.0" dbms="POSTGRES" exact-version="14.5" exact-driver-version="42.5">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>aipsdsjuqegbvf</user-name>
-      <schema-mapping />
-    </data-source>
   </component>
 </project>

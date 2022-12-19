@@ -31,11 +31,9 @@ public class Users {
         Scanner scanner = new Scanner(System.in);
         String idforchange = scanner.nextLine();
 
-        String jdbcUrl =  "jdbc:postgresql://ec2-54-75-26-218.eu-west-1.compute.amazonaws.com:5432/d76rlbpbnjk96j";
-        String databaseUserName = "aipsdsjuqegbvf";
-        String databaseUserPassword = "0d9cbb30ef98cc294991fc63006f9a6685590912fee984771fd133a11935945c";
+        String jdbcUrl =  "jdbc:postgresql://localhost:5430/postgres";
         try {
-            Connection connection = DriverManager.getConnection(jdbcUrl,databaseUserName,databaseUserPassword);
+            Connection connection = DriverManager.getConnection(jdbcUrl);
             String sql = "SELECT  * from users";
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
@@ -115,12 +113,9 @@ public class Users {
 
     }
     private static void InformationaboutUsers () {
-            String jdbcUrl =  "jdbc:postgresql://ec2-54-75-26-218.eu-west-1.compute.amazonaws.com:5432/d76rlbpbnjk96j";
-            String databaseUserName = "aipsdsjuqegbvf";
-            String databaseUserPassword = "0d9cbb30ef98cc294991fc63006f9a6685590912fee984771fd133a11935945c";
+            String jdbcUrl =  "jdbc:postgresql://localhost:5430/postgres";
             try {
-                Connection connection = DriverManager.getConnection(jdbcUrl, databaseUserName, databaseUserPassword);
-
+                Connection connection = DriverManager.getConnection(jdbcUrl);
                 DBTablePrinter.printTable(connection,"users");
                 connection.close();
             } catch (SQLException e) {
@@ -135,22 +130,15 @@ public class Users {
             Scanner scanner = new Scanner(System.in);
             String idfordelete = scanner.nextLine();
 
-            String jdbcUrl =  "jdbc:postgresql://ec2-54-75-26-218.eu-west-1.compute.amazonaws.com:5432/d76rlbpbnjk96j";
-            String databaseUserName = "aipsdsjuqegbvf";
-            String databaseUserPassword = "0d9cbb30ef98cc294991fc63006f9a6685590912fee984771fd133a11935945c";
+            String jdbcUrl =  "jdbc:postgresql://localhost:5430/postgres";
             try {
-                Connection connection = DriverManager.getConnection(jdbcUrl, databaseUserName, databaseUserPassword);
+                Connection connection = DriverManager.getConnection(jdbcUrl);
                 String sql = "SELECT  * from users";
                 Statement statement = connection.createStatement();
                 ResultSet result = statement.executeQuery(sql);
                 while (result.next()) {
                     String idfromtable = result.getString("id");
-                    String usernameFromTable = result.getString("username");
-                    String passwordFromTable = result.getString("password");
-                    String genderFromTable = result.getString("gender");
-                    String roleFromTable = result.getString("role");
                     if (idfordelete.equals(idfromtable)) {
-                        System.out.println(usernameFromTable +"\t"+passwordFromTable +"\t" + genderFromTable +"\t" + roleFromTable +"\t");
                         System.out.println("Please press 'y' to delete!");
                         String choicefordelete = scanner.nextLine();
                         if (choicefordelete.equals("y")){
@@ -171,12 +159,9 @@ public class Users {
             }
         }
     private static void addUser () {
-            String jdbcUrl =  "jdbc:postgresql://ec2-54-75-26-218.eu-west-1.compute.amazonaws.com:5432/d76rlbpbnjk96j";
-            String databaseUserName = "aipsdsjuqegbvf";
-            String databaseUserPassword = "0d9cbb30ef98cc294991fc63006f9a6685590912fee984771fd133a11935945c";
-
+            String jdbcUrl =  "jdbc:postgresql://localhost:5430/postgres";
             try {
-                Connection connection = DriverManager.getConnection(jdbcUrl, databaseUserName, databaseUserPassword);
+                Connection connection = DriverManager.getConnection(jdbcUrl);
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Enter username: \n");
                 String username = scanner.nextLine();

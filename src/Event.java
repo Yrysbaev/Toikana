@@ -14,19 +14,13 @@ public class Event {
         System.out.println("1.Add Event\n2.Delete Event\n3.Change Event\n\n9.Information\n0.Exit");
         Scanner scan = new Scanner(System.in);
         String choice = scan.nextLine();
-        if (choice.equals("1") || choice.equals("Add")) {
-            Addevent();
-        } else if (choice.equals("2") || choice.equals("Delete")) {
-            delevent();
-        } else if (choice.equals("3") || choice.equals("Change")) {
-            System.out.println("This part is not ready yet!");
-            ManagerWelcome();
-        } else if (choice.equals("9") || choice.equals("Information")){
-            informationaboutevent1();
-        } else if (choice.equals("0") || choice.equals("Exit")){
-            Admin.managerwelcome();
-        }else{
-            ManagerWelcome();
+        switch (choice) {
+            case "1", "Add" -> Addevent();
+            case "2", "Delete" -> delevent();
+            case "3", "Change" -> changeevent();
+            case "9", "Information" -> informationaboutevent1();
+            case "0", "Exit" -> Admin.managerwelcome();
+            default -> ManagerWelcome();
         }
     }
     public static void AdminWelcome() {
@@ -35,19 +29,13 @@ public class Event {
         System.out.println("1.Add Event\n2.Delete Event\n3.Change Event\n\n9.Information\n0.Exit");
         Scanner scan = new Scanner(System.in);
         String choice = scan.nextLine();
-        if (choice.equals("1") || choice.equals("Add")) {
-            Addevent();
-        } else if (choice.equals("2") || choice.equals("Delete")) {
-            delevent();
-        } else if (choice.equals("3") || choice.equals("Change")) {
-            System.out.println("This part is not ready yet!");
-            AdminWelcome();
-        } else if (choice.equals("9") || choice.equals("Information")){
-            informationaboutevent1();
-        } else if (choice.equals("0") || choice.equals("Exit")){
-            Admin.adminwelcome();
-        }else{
-            AdminWelcome();
+        switch (choice) {
+            case "1", "Add" -> Addevent();
+            case "2", "Delete" -> delevent();
+            case "3", "Change" -> changeevent();
+            case "9", "Information" -> informationaboutevent1();
+            case "0", "Exit" -> Admin.adminwelcome();
+            default -> AdminWelcome();
         }
     }
 
@@ -190,7 +178,8 @@ public class Event {
             while (result.next()) {
                 String idmenufromtable = result.getString("id");
                 if (menuid.equals(idmenufromtable)) {
-                    System.out.println("Saved!");
+                    menuid = result.getString("name");
+                    System.out.println(menuid);
                 }
             }
             connection.close();
@@ -228,6 +217,7 @@ public class Event {
             while (result.next()) {
                 String ideventfromtable = result.getString("id");
                 if (typeid.equals(ideventfromtable)) {
+                    typeid = result.getString("name");
                     System.out.println("Saved!");
                 }
             }
@@ -277,6 +267,7 @@ public class Event {
             while (result.next()) {
                 String idresfromtable = result.getString("id");
                 if (resid.equals(idresfromtable)) {
+                    resid = result.getString("name");
                     System.out.println("Saved!");
                 }
             }
@@ -298,5 +289,109 @@ public class Event {
         }
     }
 
+    public static void changeevent(){
+        informationaboutevent();
+        System.out.println("There are all events that have at the moment!");
+        System.out.println("Please write id that you want to change!");
+        Scanner scanner = new Scanner(System.in);
+        String idforchange = scanner.nextLine();
 
+        String jdbcUrl =  "jdbc:postgresql://localhost:5430/postgres";
+        try {
+            Connection connection = DriverManager.getConnection(jdbcUrl);
+            String sql = "SELECT * from event";
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()) {
+                String idfromtable = result.getString("id");
+                if (idforchange.equals(idfromtable)) {
+                    System.out.println("Please choose what part you want to change! \n1.Date\n2.Restaurant\n3.Type\n4.People\n5.Menu");
+                    String choiceforchange= scanner.nextLine();
+                    switch (choiceforchange) {
+                        case "1" -> {
+                            System.out.println("Enter Date: ");
+                            String newdate = scanner.nextLine();
+                            sql = String.format("UPDATE event SET date = '%s' WHERE id = %s;", newdate, idforchange);
+                            Statement statement2 = connection.createStatement();
+                            statement2.executeUpdate(sql);
+                            System.out.println("The date has been changed!");
+                            if(Registration.role.equals("admin")){
+                                AdminWelcome();
+                            }else {
+                                ManagerWelcome();
+                            }
+                        }
+                        case "2" -> {
+                            forrestaurants();
+                            sql = String.format("UPDATE event SET restaurant = '%s' WHERE id = %s;", resid, idforchange);
+                            Statement statement2 = connection.createStatement();
+                            statement2.executeUpdate(sql);
+                            System.out.println("The restaurant has been changed!");
+                            if(Registration.role.equals("admin")){
+                                AdminWelcome();
+                            }else {
+                                ManagerWelcome();
+                            }
+
+                        }
+                        case "3" -> {
+                            fortype();
+                            sql = String.format("UPDATE event SET type = '%s' WHERE id = %s;", typeid, idforchange);
+                            Statement statement2 = connection.createStatement();
+                            statement2.executeUpdate(sql);
+                            System.out.println("The type has been changed!");
+                            if(Registration.role.equals("admin")){
+                                AdminWelcome();
+                            }else {
+                                ManagerWelcome();
+                            }
+
+                        }
+                        case "4" -> {
+                            forper();
+                            sql = String.format("UPDATE event SET people = %s WHERE id = %s;", howmany, idforchange);
+                            Statement statement2 = connection.createStatement();
+                            statement2.executeUpdate(sql);
+                            System.out.println("The number of peoples has been changed!");
+                            if(Registration.role.equals("admin")){
+                                AdminWelcome();
+                            }else {
+                                ManagerWelcome();
+                            }
+
+                        }
+                        case "5" -> {
+                            formenu();
+                            sql = String.format("UPDATE event SET menu = '%s' WHERE id = %s;", menuid, idforchange);
+                            Statement statement2 = connection.createStatement();
+                            statement2.executeUpdate(sql);
+                            System.out.println("The menu has been changed!");
+                            forprice();
+
+                            sql = String.format("UPDATE event SET price = %s WHERE id = %s;", totalprice, idforchange);
+                            Statement statement3 = connection.createStatement();
+                            statement3.executeUpdate(sql);
+                            if(Registration.role.equals("admin")){
+                                AdminWelcome();
+                            }else {
+                                ManagerWelcome();
+                            }
+
+                        }
+                        default -> {
+                            System.out.println("Incorrect username");
+                            if(Registration.role.equals("admin")){
+                                AdminWelcome();
+                            }else {
+                                ManagerWelcome();
+                            }
+                        }
+                    }
+                }
+            }
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

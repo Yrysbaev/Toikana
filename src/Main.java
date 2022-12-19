@@ -10,5 +10,4 @@ public class Main {
         Registration registration = new Registration();
         registration.input();
     }
-
 }
